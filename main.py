@@ -30,7 +30,7 @@ def main():
                     else:
                         set_not_full_screen()
                 elif event.key == pygame.K_e:
-                    create_explosion(mouse_coords()[0], mouse_coords()[1], 64)
+                    create_explosion(mouse_coords()[0], mouse_coords()[1], 0)
                     add_fighter(mouse_coords()[0], mouse_coords()[1])
                 elif event.key == pygame.K_p:
                    Game.PAUSED = not Game.PAUSED
