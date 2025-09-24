@@ -294,7 +294,7 @@ class Fighter:
 
     def take_damage(self, damage_amount):
         self.hp -= damage_amount
-        self.hurt_cooldown = 60
+        self.hurt_cooldown = 30
 
     def take_knockback(self, knockback_speed, knockback_direction):
         self.knockback = knockback_speed
