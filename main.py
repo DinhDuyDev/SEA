@@ -37,7 +37,8 @@ def main():
                 elif event.key == pygame.K_p:
                    Game.PAUSED = not Game.PAUSED
 
-                get_name(event)
+                if Game.giving_names:
+                    get_name(event)
 
         ######### Drawing block #########
         Game.draw_dest.fill((0, 0, 0))
