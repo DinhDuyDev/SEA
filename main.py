@@ -51,6 +51,7 @@ def main():
             Camera.update(None)
         ######### Moving fighters
 
+        # While you are playing
         if not Game.giving_names:
             for f in Fighter.list_of_fighters:
                 if not Game.PAUSED:
