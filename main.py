@@ -79,8 +79,8 @@ def main():
                 Game.draw_dest.blit(FIGHTER_SPRITE, FIGHTER_SPRITE.get_rect(center=(f.x-c[0], f.y-c[1])))
                 Game.draw_dest.blit(unique_tint, unique_tint.get_rect(center=(f.x-c[0], f.y-c[1])))
 
-                w = pygame.transform.rotate(WEAPONS[f.get_weapon_sprite()], f.get_weapon_direction())
-                Game.draw_dest.blit(w, w.get_rect(center=(f.x-c[0], f.y+5-c[1])))
+                    w = pygame.transform.rotate(WEAPONS[f.get_weapon_sprite()], f.get_weapon_direction())
+                    Game.draw_dest.blit(w, w.get_rect(center=(f.x-c[0], f.y+5-c[1])))
 
                     text_surf = my_font.render(f.get_name(), False, (255, 255, 255))
                     text_rect = text_surf.get_rect(center=(f.x, f.y-16))
