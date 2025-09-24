@@ -20,9 +20,11 @@ def main():
                 Game.screen = pygame.display.set_mode(event.size, HWSURFACE|DOUBLEBUF|RESIZABLE)
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
-                    running = False
-                elif event.key == pygame.K_TAB:
-                    Game.level_editor = not Game.level_editor
+                    if not Game.giving_names:
+                        Game.giving_names = True
+                        TextBox.curr_name_string = ""
+                    else:
+                        running = False
                 elif event.key == pygame.K_F4:
                     Game.FULLSCREEN = not Game.FULLSCREEN
                     if Game.FULLSCREEN:
