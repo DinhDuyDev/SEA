@@ -74,8 +74,9 @@ def main():
                 w = pygame.transform.rotate(WEAPONS[f.get_weapon_sprite()], f.get_weapon_direction())
                 Game.draw_dest.blit(w, w.get_rect(center=(f.x-c[0], f.y+5-c[1])))
 
-                text_surf = my_font.render(f.get_name(), (255, 0, 0), (f.x, f.y-16))
-                Game.draw_dest.blit(text_surf)
+                text_surf = my_font.render(f.get_name(), False, (255, 0, 0))
+                text_rect = text_surf.get_rect(center=(f.x, f.y-16))
+                Game.draw_dest.blit(text_surf, text_rect)
                 #if point_distance(f.x, f.y, mouse_coords()[0], mouse_coords()[1]) < 16:
                 pygame.draw.rect(Game.draw_dest, (255, 0, 0), (f.x-16-c[0], f.y+8-c[1], 32, 6))
                 pygame.draw.rect(Game.draw_dest, (82, 14, 125), (f.x-16-c[0], f.y+8-c[1], (f.get_recovery_health()/Fighter.full_health) * 32, 6))
