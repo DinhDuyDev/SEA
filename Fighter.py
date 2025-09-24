@@ -142,6 +142,8 @@ class Fighter:
         self.y = y
         self.hp = hp
         self.recovery_hp = hp
+
+        self.name = name
         self.hurt_cooldown = 0
         self.move_dir = 0
         self.fighter_id = Fighter.fighter_id
