@@ -30,6 +30,7 @@ class TextBox:
 def get_name(event):
     if event.key == pygame.K_RETURN:
         NameQueue.names_queue.append(TextBox.curr_name_string)
+        TextBox.curr_name_string = ""
     elif event.key == pygame.K_TAB:
         Game.giving_names = False
     elif event.key == pygame.K_BACKSPACE:
