@@ -316,8 +316,9 @@ def add_fighter(x=random.randrange(0, 640), y=random.randrange(0, 320), name=f"N
     Fighter.list_of_fighters.append(Fighter(x, y, name, Fighter.full_health))
 
 
-add_fighter(80, 180)
-add_fighter(560, 180)
+add_fighter(name="Andrew")
+add_fighter(name="Per")
+add_fighter(name="Duy")
 # add_fighter()
 # add_fighter()
 # add_fighter()
