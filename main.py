@@ -97,15 +97,15 @@ def main():
             if not Game.PAUSED:
                 st.action()
 
-        for e in Explosion.list_of_explosion:
-            if not Game.PAUSED:
-                for fi in Fighter.list_of_fighters:
-                    dist = point_distance(fi.x, fi.y, e.x, e.y)
-                    if dist < e.radius:
-                        fi.take_damage(e.radius - dist)
-                        dir_to_player = point_direction(e.x, e.y, fi.x, fi.y)
-                        fi.take_knockback(random.randrange(3, 6), dir_to_player)
-                e.explode()
+            for e in Explosion.list_of_explosion:
+                if not Game.PAUSED:
+                    for fi in Fighter.list_of_fighters:
+                        dist = point_distance(fi.x, fi.y, e.x, e.y)
+                        if dist < e.radius:
+                            fi.take_damage(e.radius - dist)
+                            dir_to_player = point_direction(e.x, e.y, fi.x, fi.y)
+                            fi.take_knockback(random.randrange(3, 6), dir_to_player)
+                    e.explode()
 
         #pygame.draw.rect(Game.draw_dest, (255, 0, 0), (100, 100, 25, 25))
         Game.screen.blit(pygame.transform.scale(Game.draw_dest, Game.screen.get_rect().size), (0, 0))
