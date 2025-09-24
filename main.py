@@ -30,9 +30,10 @@ def main():
                     else:
                         set_not_full_screen()
                 elif event.key == pygame.K_e:
-                    if len(Fighter.list_of_fighters) == 0 or len(Fighter.list_of_fighters) == 1:
-                        Fighter.list_of_fighters.clear()
-                        add_all_fighters_in_queue()
+                    if not Game.giving_names:
+                        if len(Fighter.list_of_fighters) == 0 or len(Fighter.list_of_fighters) == 1:
+                            Fighter.list_of_fighters.clear()
+                            add_all_fighters_in_queue()
                 elif event.key == pygame.K_p:
                    Game.PAUSED = not Game.PAUSED
 
