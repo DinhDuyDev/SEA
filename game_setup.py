@@ -10,7 +10,10 @@ class Game:
     draw_dest = None
     PAUSED = False
     level_editor = True
-    changing_body = False
+    giving_names = True
+
+class NameQueue:
+    names_queue = []
 
 def set_full_screen():
     Game.screen = pg.display.set_mode((0, 0), pygame.FULLSCREEN, HWSURFACE | DOUBLEBUF | RESIZABLE)
