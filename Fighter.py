@@ -307,8 +307,8 @@ class Fighter:
     def get_weapon_direction(self):
         return self.weapon_direction
 
-def add_fighter(x=random.randrange(0, 640), y=random.randrange(0, 320)):
-    Fighter.list_of_fighters.append(Fighter(x, y, Fighter.full_health))
+def add_fighter(x=random.randrange(0, 640), y=random.randrange(0, 320), name=f"NONAME{Fighter.fighter_id}"):
+    Fighter.list_of_fighters.append(Fighter(x, y, name, Fighter.full_health))
 
 
 add_fighter(80, 180)
