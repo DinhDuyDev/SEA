@@ -32,7 +32,7 @@ def get_name(event):
         NameQueue.names_queue.append(TextBox.curr_name_string)
         TextBox.curr_name_string = ""
     elif event.key == pygame.K_TAB:
-        Game.giving_names = False
+        Game.giving_names = False # Move into play mode!M
     elif event.key == pygame.K_BACKSPACE:
         TextBox.curr_name_string = TextBox.curr_name_string[:-1]
     else:
