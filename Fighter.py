@@ -327,6 +327,4 @@ def add_fighter(x=random.randrange(0, 640), y=random.randrange(0, 320), name=f"N
 def add_all_fighters_in_queue():
     for fn in Fighter.names_queue:
         add_fighter(name=fn)
-# add_fighter()
-# add_fighter()
-# add_fighter()
+
