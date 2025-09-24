@@ -39,7 +39,7 @@ def get_name(event):
         if len(NameQueue.names_queue) == 0:
             NameQueue.names_queue.pop()
     else:
-        TextBox.curr_name_string += event.key.unicode
+        TextBox.curr_name_string += event.unicode
 def add_all_fighters_in_queue():
     for fn in NameQueue.names_queue:
         add_fighter(random.randrange(0, 640), random.randrange(0, 640), name=fn)
