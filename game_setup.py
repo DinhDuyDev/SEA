@@ -3,7 +3,7 @@ from pygame.locals import *
 from settings import *
 import pygame.time
 import random
-from Fighter import *
+from Fighter import add_fighter
 
 class Game:
     FULLSCREEN = True
