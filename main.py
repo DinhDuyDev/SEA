@@ -106,6 +106,15 @@ def main():
                             dir_to_player = point_direction(e.x, e.y, fi.x, fi.y)
                             fi.take_knockback(random.randrange(3, 6), dir_to_player)
                     e.explode()
+        else:
+            names_surf = my_font.render(f"> {TextBox.curr_name_string} ", False, (255, 0, 0))
+            names_rect = names_surf.get_rect(topleft=(64, 64))
+            Game.draw_dest.blit(names_surf, names_rect)
+
+            for i in range(len(NameQueue.names_queue)):
+                names_surf_list = my_font.render(f"| {NameQueue.names_queue[i]}", False, (255, 0, 0))
+                names_rect_list = names_surf.get_rect(topleft=(WINDOW_WIDTH/2+64, i * 16+64))
+                Game.draw_dest.blit(names_surf_list, names_rect_list)
 
         #pygame.draw.rect(Game.draw_dest, (255, 0, 0), (100, 100, 25, 25))
         Game.screen.blit(pygame.transform.scale(Game.draw_dest, Game.screen.get_rect().size), (0, 0))
