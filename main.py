@@ -49,15 +49,16 @@ def main():
             Camera.update(None)
         ######### Moving fighters
 
-        for f in Fighter.list_of_fighters:
-            if not Game.PAUSED:
-                f.action()
-        for b in Bullet.list_of_bullets:
-            if not Game.PAUSED:
-                b.action()
-                for f in Fighter.list_of_fighters:
-                    if point_distance(b.x, b.y, f.x, f.y) < b.hit_radius and b.spawner is not f:
-                        f.take_damage(b.get_damage())
+        if not Game.giving_names:
+            for f in Fighter.list_of_fighters:
+                if not Game.PAUSED:
+                    f.action()
+            for b in Bullet.list_of_bullets:
+                if not Game.PAUSED:
+                    b.action()
+                    for f in Fighter.list_of_fighters:
+                        if point_distance(b.x, b.y, f.x, f.y) < b.hit_radius and b.spawner is not f:
+                            f.take_damage(b.get_damage())
 
         print(len(Bullet.list_of_bullets))
 
