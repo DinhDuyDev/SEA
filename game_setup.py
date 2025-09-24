@@ -35,6 +35,9 @@ def get_name(event):
         Game.giving_names = False # Move into play mode!
     elif event.key == pygame.K_BACKSPACE:
         TextBox.curr_name_string = TextBox.curr_name_string[:-1]
+    elif event.key == pygame.K_g:
+        if len(NameQueue.names_queue) == 0:
+            NameQueue.names_queue.pop()
     else:
         TextBox.curr_name_string += event.key.unicode
 def add_all_fighters_in_queue():
