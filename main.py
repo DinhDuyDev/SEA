@@ -69,15 +69,15 @@ def main():
             Game.draw_dest.blit(b_spr, b_spr.get_rect(center=(b.x-c[0], b.y-c[1])))
             #pygame.draw.rect(Game.draw_dest, (255, 255, 255), (b.x - 2, b.y - 2, 2, 2))
 
-        ######## Drawing block (cont) ########
-        for f in Fighter.list_of_fighters:
-            if f.hp > 0:
-                col = f.color
-                unique_tint = pygame.Surface((13, 13))
-                unique_tint.fill(col)
-                unique_tint.set_alpha(128)
-                Game.draw_dest.blit(FIGHTER_SPRITE, FIGHTER_SPRITE.get_rect(center=(f.x-c[0], f.y-c[1])))
-                Game.draw_dest.blit(unique_tint, unique_tint.get_rect(center=(f.x-c[0], f.y-c[1])))
+            ######## Drawing block (cont) ########
+            for f in Fighter.list_of_fighters:
+                if f.hp > 0:
+                    col = f.color
+                    unique_tint = pygame.Surface((13, 13))
+                    unique_tint.fill(col)
+                    unique_tint.set_alpha(128)
+                    Game.draw_dest.blit(FIGHTER_SPRITE, FIGHTER_SPRITE.get_rect(center=(f.x-c[0], f.y-c[1])))
+                    Game.draw_dest.blit(unique_tint, unique_tint.get_rect(center=(f.x-c[0], f.y-c[1])))
 
                     w = pygame.transform.rotate(WEAPONS[f.get_weapon_sprite()], f.get_weapon_direction())
                     Game.draw_dest.blit(w, w.get_rect(center=(f.x-c[0], f.y+5-c[1])))
