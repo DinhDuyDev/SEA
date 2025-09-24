@@ -2,7 +2,8 @@ import pygame as pg
 from pygame.locals import *
 from settings import *
 import pygame.time
-
+import random
+from Fighter import *
 
 class Game:
     FULLSCREEN = True
