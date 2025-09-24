@@ -64,10 +64,10 @@ def main():
 
             #print(len(Bullet.list_of_bullets))
 
-        for b in Bullet.list_of_bullets:
-            b_spr = pygame.transform.rotate(BULLET_SPRITES[b.get_type()], b.dir)
-            Game.draw_dest.blit(b_spr, b_spr.get_rect(center=(b.x-c[0], b.y-c[1])))
-            #pygame.draw.rect(Game.draw_dest, (255, 255, 255), (b.x - 2, b.y - 2, 2, 2))
+            for b in Bullet.list_of_bullets:
+                b_spr = pygame.transform.rotate(BULLET_SPRITES[b.get_type()], b.dir)
+                Game.draw_dest.blit(b_spr, b_spr.get_rect(center=(b.x-c[0], b.y-c[1])))
+                #pygame.draw.rect(Game.draw_dest, (255, 255, 255), (b.x - 2, b.y - 2, 2, 2))
 
             ######## Drawing block (cont) ########
             for f in Fighter.list_of_fighters:
