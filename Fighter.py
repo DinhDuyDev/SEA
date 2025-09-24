@@ -227,6 +227,8 @@ class Fighter:
 
         self.color = (random.randrange(0, 255),random.randrange(0, 255),random.randrange(0, 255))
 
+        # Dramatic explosion effect
+        create_explosion(self.x, self.y, 0)
 
     # ALSO DEFINES THE GAME'S WIN STATE FOR SOME DAMNED REASON
     def target_fighter(self):
