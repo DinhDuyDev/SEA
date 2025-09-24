@@ -11,6 +11,12 @@ class Fighter:
     full_health = 1_000
     list_of_fighters = []
 
+    names_queue = [ # Coupling everything together
+        "Andrew",
+        "Per",
+        "Duy"
+    ]
+
     def destroy(self):
         screen_shake(3, 30)
         for i in range(12):
