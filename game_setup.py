@@ -17,6 +17,24 @@ def set_full_screen():
 def set_not_full_screen():
     Game.screen = pg.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT), HWSURFACE | DOUBLEBUF | RESIZABLE)
 
+#class Button:
+#    def __init__(self):
+
+class TextBox:
+    curr_name_string = ""
+
+def get_name(event):
+    if event.key == pygame.K_RETURN:
+        NameQueue.names_queue.append(TextBox.curr_name_string)
+    elif event.key == pygame.K_TAB:
+        Game.giving_names = False
+    elif event.key == pygame.K_BACKSPACE:
+        TextBox.curr_name_string = TextBox.curr_name_string[:-1]
+    else:
+        TextBox.curr_name_string += event.key.unicode
+def add_all_fighters_in_queue():
+    for fn in NameQueue.names_queue:
+        add_fighter(random.randrange(0, 640), random.randrange(0, 640), name=fn)
 
 pg.init()
 pg.font.init()
