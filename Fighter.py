@@ -137,6 +137,7 @@ class Fighter:
         self.x = min(max(16, self.x), WINDOW_WIDTH-16)
         self.y = min(max(16, self.y), WINDOW_HEIGHT-16)
 
+    # Arguments of the add fighter function is becoming bloated.
     def __init__(self, x, y, name=f"NONAME{fighter_id}", hp=full_health):
         self.x = x
         self.y = y
