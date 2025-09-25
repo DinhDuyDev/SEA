@@ -159,6 +159,7 @@ def get_keys(event):
         TextBox.curr_name_string = ""
     elif event.key == pygame.K_TAB:
         Game.giving_names = False # Move into play mode!
+        Game.curr_state = "FIGHTING"
     elif event.key == pygame.K_BACKSPACE:
         TextBox.curr_name_string = TextBox.curr_name_string[:-1]
     elif event.key == pygame.K_g:
