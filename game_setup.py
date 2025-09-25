@@ -168,6 +168,10 @@ def add_all_fighters_in_queue():
     for fn in NameQueue.names_queue:
         add_fighter(random.randrange(0, 640), random.randrange(0, 640), name=fn)
 
+def mouse_coords():
+    x = pygame.mouse.get_pos()[0] / (Game.screen.get_rect().width / Game.draw_dest.get_width())
+    y = pygame.mouse.get_pos()[1] / (Game.screen.get_rect().height / Game.draw_dest.get_height())
+    return x, y
 
 pygame.display.set_caption('AI SUPER SHOWDOWN')
 
