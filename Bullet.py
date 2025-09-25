@@ -29,7 +29,8 @@ class Bullet:
         self.damage = damage
         self.spawner = spawner
         self.speed = random.randrange(6, 8)
-        self.decay_countdown = 60
+
+        self.decay_start = 60
         self.speed_multiplier = spd_mlt
         self.bullet_type = bullet_type
         self.hit_radius = 9
