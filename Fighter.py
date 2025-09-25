@@ -116,7 +116,7 @@ class Fighter:
 
     def slash_enemy(self):
         rof_end = 5
-        self.weapon_direction += 15
+        self.weapon_direction += 40
         c = random.randrange(70, 255)
         create_smoke(self.x + math.cos(self.weapon_direction) * 15
                      , self.y - math.sin(self.weapon_direction) * 15
