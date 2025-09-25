@@ -142,10 +142,6 @@ Game.draw_dest = Game.screen.copy()
 class NameQueue:
     names_queue = []
 
-def set_full_screen():
-    Game.screen = pg.display.set_mode((0, 0), pygame.FULLSCREEN, HWSURFACE | DOUBLEBUF | RESIZABLE)
-def set_not_full_screen():
-    Game.screen = pg.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT), HWSURFACE | DOUBLEBUF | RESIZABLE)
 
 #class Button:
 #    def __init__(self):
