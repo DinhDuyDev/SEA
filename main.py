@@ -1,8 +1,15 @@
 import pygame
 from game_setup import *
 from Fighter import *
-from Smoke_And_Explosions import *
-from Camera import *
+
+
+
+def mouse_coords():
+    x = pygame.mouse.get_pos()[0] / (Game.screen.get_rect().width / Game.draw_dest.get_width())
+    y = pygame.mouse.get_pos()[1] / (Game.screen.get_rect().height / Game.draw_dest.get_height())
+    return x, y
+
+
 def main():
     def mouse_coords():
         x = pygame.mouse.get_pos()[0] / (Game.screen.get_rect().width / Game.draw_dest.get_width())
