@@ -126,6 +126,18 @@ class Game:
     PAUSED = False
     level_editor = True
     giving_names = True
+    running = True
+    curr_state = "ADDING_NAMES"
+
+    states = {
+        "MENU" : None,
+        "ADDING_NAMES" : adding_names,
+        "FIGHTING" : fighting
+    }
+
+Game.screen = pg.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT), HWSURFACE|DOUBLEBUF|RESIZABLE)
+Game.draw_dest = Game.screen.copy()
+
 
 class NameQueue:
     names_queue = []
