@@ -34,7 +34,7 @@ class Bullet:
         self.speed_multiplier = spd_mlt
         self.bullet_type = bullet_type
         self.hit_radius = 9
-        
+
         create_smoke(self.x + math.cos(math.radians(self.dir-7)) * 24
                      , self.y - math.sin(math.radians(self.dir-7)) * 24, 6, (255, 255, 255))
 
