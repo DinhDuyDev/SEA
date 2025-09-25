@@ -185,7 +185,7 @@ BULLET_SPRITES = {
 }
 
 WEAPONS = {
-    "KATANA" : pygame.image.load('sprites/katana.png').convert_alpha(),
+    "KATANA" : pygame.transform.scale_by(pygame.image.load('sprites/katana.png').convert_alpha(), (2, 1)),
     "SHOTGUN" : pygame.image.load('sprites/shotgun.png').convert_alpha(),
     "MACHINEGUN": pygame.image.load('sprites/machinegun.png').convert_alpha(),
     "SPLITTER" : pygame.image.load('sprites/splitter.png').convert_alpha(),
