@@ -153,7 +153,7 @@ def set_not_full_screen():
 class TextBox:
     curr_name_string = ""
 
-def get_name(event):
+def get_keys(event):
     if event.key == pygame.K_RETURN:
         NameQueue.names_queue.append(TextBox.curr_name_string)
         TextBox.curr_name_string = ""
