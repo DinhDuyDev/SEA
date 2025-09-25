@@ -50,6 +50,7 @@ class Bullet:
                 if self.damage % 2 == 0:
                     c = random.randrange(95, 138)
                     create_smoke(self.x, self.y, random.randrange(3, 5), (c, c, c))
+
         self.update_self()
 
     def get_damage(self):
