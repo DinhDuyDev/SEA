@@ -13,7 +13,7 @@ def mouse_coords():
 def main():
 
     clock = pygame.time.Clock()
-    running = True
+    Game.running = True
 
     while running:
         for event in pg.event.get():
