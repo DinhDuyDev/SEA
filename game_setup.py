@@ -173,10 +173,6 @@ def add_all_fighters_in_queue():
     for fn in NameQueue.names_queue:
         add_fighter(random.randrange(0, 640), random.randrange(0, 640), name=fn)
 
-pg.init()
-pg.font.init()
-
-my_font = pygame.font.SysFont('./Kranky/Kranky-Regular.ttf', 15)
 
 # All surfaces
 Game.screen = pg.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT), HWSURFACE|DOUBLEBUF|RESIZABLE)
