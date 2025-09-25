@@ -166,7 +166,9 @@ def get_keys(event):
         if len(NameQueue.names_queue) != 0:
             NameQueue.names_queue.pop()
     else:
-        TextBox.curr_name_string += event.unicode
+        if event.key != pygame.K_ESCAPE: #and Game.giving_names:
+            TextBox.curr_name_string += event.unicode
+
 def add_all_fighters_in_queue():
     for fn in NameQueue.names_queue:
         add_fighter(random.randrange(0, 640), random.randrange(0, 640), name=fn)
