@@ -158,7 +158,7 @@ def get_keys(event):
         Game.curr_state = "FIGHTING"
     elif event.key == pygame.K_BACKSPACE:
         TextBox.curr_name_string = TextBox.curr_name_string[:-1]
-    elif event.key == pygame.K_g:
+    elif event.key == pygame.K_LSHIFT or event.key == pygame.K_RSHIFT:
         if len(NameQueue.names_queue) != 0:
             NameQueue.names_queue.pop()
     else:
