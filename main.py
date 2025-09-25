@@ -15,32 +15,12 @@ def main():
     clock = pygame.time.Clock()
     Game.running = True
 
-    while running:
-        for event in pg.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-            elif event.type == pygame.VIDEORESIZE:
-                Game.screen = pygame.display.set_mode(event.size, HWSURFACE|DOUBLEBUF|RESIZABLE)
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
-                    if not Game.giving_names:
-                        Game.giving_names = True
-                        TextBox.curr_name_string = ""
-                    else:
-                        running = False
-                elif event.key == pygame.K_F4:
-                    Game.FULLSCREEN = not Game.FULLSCREEN
-                    if Game.FULLSCREEN:
-                        set_full_screen()
-                    else:
-                        set_not_full_screen()
-                elif event.key == pygame.K_e:
-                    if not Game.giving_names:
-                        if len(Fighter.list_of_fighters) == 0 or len(Fighter.list_of_fighters) == 1:
-                            Fighter.list_of_fighters.clear()
-                            add_all_fighters_in_queue()
-                elif event.key == pygame.K_p:
-                   Game.PAUSED = not Game.PAUSED
+    while Game.running:
+        # for event in pg.event.get():
+        #     if event.type == pygame.QUIT:
+        #         Game.running = False
+        #     elif event.type == pygame.KEYDOWN:
+        #         get_keys(event)
 
                 if Game.giving_names:
                     get_name(event)
