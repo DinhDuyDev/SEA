@@ -197,7 +197,7 @@ class Fighter:
             self.minigun_enemy : "MINIGUN",
             self.splitter_enemy : "SPLITTER",
             self.rocket_launcher : 'ROCKETLAUNCHER',
-            self.slash_enemy : "KATANA",
+            self.slash_enemy : "KATANA"
         }
 
         self.movement_direction = 0
