@@ -174,11 +174,7 @@ def add_all_fighters_in_queue():
         add_fighter(random.randrange(0, 640), random.randrange(0, 640), name=fn)
 
 
-# All surfaces
-Game.screen = pg.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT), HWSURFACE|DOUBLEBUF|RESIZABLE)
-Game.draw_dest = Game.screen.copy()
-
-pygame.display.set_caption('METALPOCALYPSE')
+pygame.display.set_caption('AI SUPER SHOWDOWN')
 
 FIGHTER_SPRITE = pygame.image.load('sprites/fighter.png').convert_alpha()
 BULLET_SPRITES = {
