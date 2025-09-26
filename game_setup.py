@@ -251,7 +251,7 @@ def fighting():
     #     Fighter.kill_feed = ""
 
     if len(Fighter.list_of_fighters) == 1:
-        OnDemandText(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, f"{Fighter.list_of_fighters[0].name} won!", 180, 2)
+        OnDemandText(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, f"{Fighter.list_of_fighters[0].name} won!", 30, 2)
 
 
 class Game:
