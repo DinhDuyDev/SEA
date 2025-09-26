@@ -98,7 +98,19 @@ class Text:
 def menu_room():
     mx, my = mouse_coords()
     start_game = [b for b in Button.list_of_buttons if b.text == "START GAME"][0]
-    end_game = [b for b in Button.list_of_buttons if b.text == "END GAME"][0]
+    end_game = [b for b in Button.list_of_buttons if b.text == "EXIT GAME"][0]
+
+    for event in pg.event.get():
+        if event.type == pygame.QUIT:
+            Game.running = False
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                Game.running = False
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            if start_game.button_rect.collidepoint(mx, my):
+                Game.curr_state = "ADDING_NAMES"
+            elif end_game.button_rect.collidepoint(mx, my):
+                Game.running = False
 
 def adding_names():
 
