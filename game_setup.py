@@ -120,9 +120,6 @@ def adding_names():
     def get_keys(e):
         if e.key == pygame.K_BACKSPACE:
             TextBox.curr_name_string = TextBox.curr_name_string[:-1]
-        elif e.key == pygame.K_LSHIFT or e.key == pygame.K_RSHIFT:
-            if len(NameQueue.names_queue) != 0:
-                NameQueue.names_queue.pop()
         else:
             if e.key != pygame.K_ESCAPE and e.key != pygame.K_RETURN:  # and Game.giving_names:
                 TextBox.curr_name_string += event.unicode
