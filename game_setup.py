@@ -270,32 +270,6 @@ Game.screen = pg.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT), HWSURFACE|DOUBL
 Game.draw_dest = Game.screen.copy()
 
 
-class NameQueue:
-    names_queue = []
-
-
-#class Button:
-#    def __init__(self):
-
-class TextBox:
-    curr_name_string = ""
-
-def get_keys(event):
-    if event.key == pygame.K_RETURN:
-        NameQueue.names_queue.append(TextBox.curr_name_string)
-        TextBox.curr_name_string = ""
-    elif event.key == pygame.K_TAB:
-        Game.giving_names = False # Move into play mode!
-        Game.curr_state = "FIGHTING"
-    elif event.key == pygame.K_BACKSPACE:
-        TextBox.curr_name_string = TextBox.curr_name_string[:-1]
-    elif event.key == pygame.K_LSHIFT or event.key == pygame.K_RSHIFT:
-        if len(NameQueue.names_queue) != 0:
-            NameQueue.names_queue.pop()
-    else:
-        if event.key != pygame.K_ESCAPE: #and Game.giving_names:
-            TextBox.curr_name_string += event.unicode
-
 def add_all_fighters_in_queue():
     for fn in NameQueue.names_queue:
         add_fighter(random.randrange(0, 640), random.randrange(0, 640), name=fn)
