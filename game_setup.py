@@ -170,15 +170,22 @@ def fighting():
             if not Game.PAUSED:
                 st.action()
 
-        for e in Explosion.list_of_explosion:
-            if not Game.PAUSED:
-                for fi in Fighter.list_of_fighters:
-                    dist = point_distance(fi.x, fi.y, e.x, e.y)
-                    if dist < e.radius:
-                        fi.take_damage(e.radius - dist)
-                        dir_to_player = point_direction(e.x, e.y, fi.x, fi.y)
-                        fi.take_knockback(random.randrange(3, 6), dir_to_player)
-                e.explode()
+    for e in Explosion.list_of_explosion:
+        if not Game.PAUSED:
+            for fi in Fighter.list_of_fighters:
+                dist = point_distance(fi.x, fi.y, e.x, e.y)
+                if dist < e.radius:
+                    fi.take_damage(e.radius - dist)
+                    dir_to_player = point_direction(e.x, e.y, fi.x, fi.y)
+                    fi.take_knockback(random.randrange(3, 6), dir_to_player)
+            e.explode()
+    if Fighter.kill_feed != "":
+        OnDemandText.list_of_text.clear()
+        OnDemandText(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 - 128, Fighter.kill_feed, 180, 2)
+        Fighter.kill_feed = ""
+
+    if len(Fighter.list_of_fighters) == 1:
+        OnDemandText(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, f"{Fighter.list_of_fighters[0].name} won!", 180, 2)
 
 
 class Game:
