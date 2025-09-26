@@ -10,7 +10,7 @@ from Fighter import *
 pg.init()
 pg.font.init()
 
-my_font = pygame.font.SysFont('./Kranky/Kranky-Regular.ttf', 15)
+my_font = pygame.font.SysFont("Verdana", 10)
 
 # Defining functions
 
