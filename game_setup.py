@@ -46,6 +46,7 @@ class Button:
         else:
             self.color = (oc[0], oc[1], oc[2])
 
+
 class NameQueue:
     names_queue = []
 
