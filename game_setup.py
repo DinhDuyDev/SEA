@@ -17,13 +17,7 @@ my_font = pygame.font.SysFont('./Kranky/Kranky-Regular.ttf', 15)
 def adding_names():
 
     def get_keys(e):
-        if e.key == pygame.K_RETURN:
-            NameQueue.names_queue.append(TextBox.curr_name_string)
-            TextBox.curr_name_string = ""
-        elif e.key == pygame.K_TAB:
-            Game.giving_names = False  # Move into play mode!
-            Game.curr_state = "FIGHTING"
-        elif e.key == pygame.K_BACKSPACE:
+        if e.key == pygame.K_BACKSPACE:
             TextBox.curr_name_string = TextBox.curr_name_string[:-1]
         elif e.key == pygame.K_LSHIFT or e.key == pygame.K_RSHIFT:
             if len(NameQueue.names_queue) != 0:
