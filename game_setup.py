@@ -173,7 +173,7 @@ def fighting():
                     add_all_fighters_in_queue()
             elif event.key == pygame.K_p:
                 Game.PAUSED = not Game.PAUSED
-                
+
     ######### Logic block #########
     c = cxy()
     if not Game.PAUSED:
