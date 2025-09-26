@@ -147,8 +147,8 @@ def adding_names():
                 Game.giving_names = False  # Move into play mode!
                 Game.curr_state = "FIGHTING"
 
-    names_surf = my_font.render(f"> {TextBox.curr_name_string} ", False, (255, 0, 0))
-    names_rect = names_surf.get_rect(topleft=(64, 64))
+    names_surf = my_font.render(f"> {TextBox.curr_name_string}|", False, (255, 0, 0))
+    names_rect = names_surf.get_rect(topleft=(64, 80))
     Game.draw_dest.blit(names_surf, names_rect)
 
     for i, v in enumerate(NameQueue.names_queue):
