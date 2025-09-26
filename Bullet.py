@@ -61,5 +61,5 @@ class Bullet:
     def get_type(self):
         return self.bullet_type
 
-def create_bullet(x, y, dir_, spawner, spd_mlt=1.0, damage=15, bullet_type="Bullet"):
-    Bullet.list_of_bullets.append(Bullet(x, y, dir_, spawner, spd_mlt, damage, bullet_type))
+def create_bullet(x, y, dir_, spawner, spd_mlt=1.0, damage=15, bullet_type="Bullet", kill_weapon="MACHINEGUN"):
+    Bullet.list_of_bullets.append(Bullet(x, y, dir_, spawner, spd_mlt, damage, bullet_type, kill_weapon=kill_weapon))
