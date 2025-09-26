@@ -23,7 +23,7 @@ def adding_names():
             if len(NameQueue.names_queue) != 0:
                 NameQueue.names_queue.pop()
         else:
-            if e.key != pygame.K_ESCAPE:  # and Game.giving_names:
+            if e.key != pygame.K_ESCAPE and e.key != pygame.K_RETURN:  # and Game.giving_names:
                 TextBox.curr_name_string += event.unicode
 
     for event in pg.event.get():
