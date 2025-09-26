@@ -144,7 +144,7 @@ def adding_names():
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mx, my = mouse_coords()[0], mouse_coords()[1]
             if add_name_button.button_rect.collidepoint(mx, my):
-                if len(NameQueue.names_queue) < 10:
+                if len(NameQueue.names_queue) < PLAYER_LIMIT:
                     NameQueue.names_queue.append(TextBox.curr_name_string)
                     TextBox.curr_name_string = ""
                 else:
