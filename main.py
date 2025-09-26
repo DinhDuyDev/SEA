@@ -16,7 +16,7 @@ def main():
     Button(WINDOW_WIDTH/2, WINDOW_HEIGHT/2+154, 128, 32, "Proceed to fight!", "ADDING_NAMES")
 
     Text(WINDOW_WIDTH/2, WINDOW_HEIGHT/2 - 128, "AI SUPER SHOWDOWN", "MENU")
-    Text(WINDOW_WIDTH/2, WINDOW_HEIGHT/2 - 128, "ENTER THE NAMES", "ADDING_NAMES")
+    Text(WINDOW_WIDTH/2, WINDOW_HEIGHT/2 - 144, "ENTER THE NAMES", "ADDING_NAMES")
 
     while Game.running:
         ######### Drawing block #########
