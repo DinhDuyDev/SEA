@@ -128,7 +128,7 @@ class Fighter:
             for i in range(7):
                 #create_bullet(self.x, self.y, direction_to_target, 15, self)
                 direction_to_target = point_direction(self.x, self.y, target_pos[0], target_pos[1]) + random.randrange(-7, 7)
-                create_bullet(self.x, self.y, direction_to_target, self, damage=15, kill_weapon=self.weapon_sprites[self.attack])
+                create_bullet(self.x, self.y, direction_to_target, self, damage=11, kill_weapon=self.weapon_sprites[self.attack])
             self.ROF = 0
         self.ROF += 1
 
