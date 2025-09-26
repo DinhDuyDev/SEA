@@ -124,6 +124,8 @@ def adding_names():
             if len(NameQueue.names_queue) < 10:
                 NameQueue.names_queue.append(TextBox.curr_name_string)
                 TextBox.curr_name_string = ""
+            else:
+                OnDemandText(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, "Maximum: 10 names.")
         else:
             if event.unicode.isalpha() or event.unicode == " ":  # and Game.giving_names:
                 if len(TextBox.curr_name_string) < 20:
