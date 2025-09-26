@@ -62,6 +62,25 @@ class Fighter:
                          , random.randrange(12, 16), (random.randrange(0, 255)
                                                                         , random.randrange(0, 255)
                                                                         , random.randrange(0, 255)))
+        if self.killer is not None:
+            kill = ""
+            if self.killer is not self:
+                ls = random.choice(Fighter.kill_message[self.kill_type]).split(" ")
+                for i in range(len(ls)):
+                    if ls[i] == "{k}":
+                        ls[i] = self.killer.get_name()
+                    elif ls[i] == "{v}":
+                        ls[i] = self.name
+                kill = " ".join(ls)
+            else:
+                kill = random.choice(
+                    [
+                        f"{self.name} no longer has that dog in them :(",
+                        f"{self.name} sees no point in life anymore :(",
+                        f"{self.name}, I feel bad for :("
+                    ]
+                )
+            Fighter.kill_feed = kill
         Fighter.list_of_fighters.remove(self)
 
     def route_enemy_left(self):
