@@ -157,7 +157,7 @@ def adding_names():
                     Game.giving_names = False  # Move into play mode!
                     Game.curr_state = "FIGHTING"
                 else:
-                    OnDemandText(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, "Minimum: 2 names.")
+                    OnDemandText(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, f"Minimum: {PLAYER_MINIMUM} names.")
 
     names_surf = my_font.render(f"> {TextBox.curr_name_string}|", False, (255, 0, 0))
     names_rect = names_surf.get_rect(topleft=(128, 64))
