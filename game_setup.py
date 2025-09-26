@@ -148,7 +148,7 @@ def adding_names():
                     NameQueue.names_queue.append(TextBox.curr_name_string)
                     TextBox.curr_name_string = ""
                 else:
-                    OnDemandText(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, "Maximum: 10 names.")
+                    OnDemandText(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, f"Maximum: {PLAYER_LIMIT} names.")
             elif delete_name_button.button_rect.collidepoint(mx, my):
                 if len(NameQueue.names_queue) != 0:
                     NameQueue.names_queue.pop()
