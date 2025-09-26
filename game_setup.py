@@ -281,7 +281,7 @@ Game.draw_dest = Game.screen.copy()
 
 def add_all_fighters_in_queue():
     for fn in NameQueue.names_queue:
-        add_fighter(random.randrange(0, 640), random.randrange(0, 640), name=fn)
+        add_fighter(random.randrange(64, WINDOW_WIDTH-64), random.randrange(64, WINDOW_HEIGHT-64), name=fn)
 
 def mouse_coords():
     x = pygame.mouse.get_pos()[0] / (Game.screen.get_rect().width / Game.draw_dest.get_width())
