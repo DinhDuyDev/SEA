@@ -96,6 +96,7 @@ class Text:
 
 
 def menu_room():
+    mx, my = mouse_coords()
     start_game = [b for b in Button.list_of_buttons if b.text == "START GAME"][0]
     end_game = [b for b in Button.list_of_buttons if b.text == "END GAME"][0]
 
