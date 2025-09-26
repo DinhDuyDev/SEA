@@ -186,6 +186,8 @@ class Fighter:
             target_pos = self.target.get_pos()
             if point_distance(self.x, self.y, target_pos[0], target_pos[1]) < 12:
                 self.target.hp -= 15
+                self.target.killer = self
+                self.target.kill_type = "KATANA"
                 self.target.take_knockback(4, self.weapon_direction)
                 c = random.randrange(70, 255)
                 create_smoke_trail(self.x, self.y, random.randrange(0, 360), (c, 0, 0))
