@@ -137,7 +137,6 @@ def adding_names():
             get_keys(event)
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mx, my = mouse_coords()[0], mouse_coords()[1]
-
             if add_name_button.button_rect.collidepoint(mx, my):
                 NameQueue.names_queue.append(TextBox.curr_name_string)
                 TextBox.curr_name_string = ""
