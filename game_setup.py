@@ -166,9 +166,9 @@ def fighting():
                 s.action()
             pygame.draw.circle(Game.draw_dest, s.get_color(), (s.x - c[0], s.y - c[1]), s.radius)
 
-        for st in SmokeTrail.list_of_smoke_trails:
-            if not Game.PAUSED:
-                st.action()
+    for st in SmokeTrail.list_of_smoke_trails:
+        if not Game.PAUSED:
+            st.action()
 
     for e in Explosion.list_of_explosion:
         if not Game.PAUSED:
