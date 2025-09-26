@@ -22,7 +22,7 @@ class Bullet:
                 create_explosion(self.x, self.y, 96, self.spawner)
             self.destroy()
 
-    def __init__(self, x, y, dir_, spawner, spd_mlt=1.0, damage=15, bullet_type="Bullet"):
+    def __init__(self, x, y, dir_, spawner, spd_mlt=1.0, damage=15, bullet_type="Bullet", kill_weapon="MACHINEGUN"):
         self.x = x
         self.y = y
         self.dir = dir_
