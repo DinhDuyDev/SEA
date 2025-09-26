@@ -153,7 +153,7 @@ def adding_names():
                 if len(NameQueue.names_queue) != 0:
                     NameQueue.names_queue.pop()
             elif proceed_button.button_rect.collidepoint(mx, my):
-                if len(NameQueue.names_queue) > 1:
+                if len(NameQueue.names_queue) >= PLAYER_MINIMUM:
                     Game.giving_names = False  # Move into play mode!
                     Game.curr_state = "FIGHTING"
                 else:
