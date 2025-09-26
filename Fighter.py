@@ -149,7 +149,7 @@ class Fighter:
         self.weapon_direction = direction_to_target
         if self.ROF > rof_end:
             screen_shake(1, 15)
-            create_bullet(self.x, self.y, direction_to_target, self, 3)
+            create_bullet(self.x, self.y, direction_to_target, self, 3, kill_weapon=self.weapon_sprites[self.attack])
             self.ROF = 0
         self.ROF += 1
 
