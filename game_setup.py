@@ -157,7 +157,7 @@ def adding_names():
                     OnDemandText(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, "Minimum: 2 names.")
 
     names_surf = my_font.render(f"> {TextBox.curr_name_string}|", False, (255, 0, 0))
-    names_rect = names_surf.get_rect(topleft=(64, 80))
+    names_rect = names_surf.get_rect(topleft=(128, 80))
     Game.draw_dest.blit(names_surf, names_rect)
 
     for i, v in enumerate(NameQueue.names_queue):
