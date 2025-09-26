@@ -152,7 +152,7 @@ class Game:
     curr_state = "ADDING_NAMES"
 
     states = {
-        "MENU" : None,
+        "MENU" : menu_room,
         "ADDING_NAMES" : adding_names,
         "FIGHTING" : fighting
     }
