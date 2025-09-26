@@ -263,6 +263,9 @@ class Fighter:
 
         self.weapon_direction = 0
 
+        self.killer = None
+        self.kill_type = None
+
         # ALL RANDOMIZABLE ATTACK PATTERNS MUST GO HERE
         self.attacks_list = [
             self.machine_gun_enemy,
