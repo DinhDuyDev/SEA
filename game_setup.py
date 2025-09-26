@@ -31,7 +31,7 @@ class Button:
 
         self.color = color
         self.og_color = color
-        self.text_surf = button_font.render(self.text, False, color)
+        self.text_surf = my_font.render(self.text, False, color)
         self.button_rect = pygame.Rect(x, y, w, h)
 
         self.button_rect.center = x, y
