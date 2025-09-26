@@ -131,7 +131,6 @@ def fighting():
                     if point_distance(b.x, b.y, f.x, f.y) < b.hit_radius and b.spawner is not f:
                         f.take_damage(b.get_damage())
 
-        # print(len(Bullet.list_of_bullets))
 
     for b in Bullet.list_of_bullets:
         b_spr = pygame.transform.rotate(BULLET_SPRITES[b.get_type()], b.dir)
