@@ -66,5 +66,5 @@ class Explosion:
         create_smoke(self.x, self.y, 48, (255, 255, 255))
         self.destroy()
 
-def create_explosion(x, y, radius):
-    Explosion.list_of_explosion.append(Explosion(x, y, radius))
+def create_explosion(x, y, radius, spawner=None):
+    Explosion.list_of_explosion.append(Explosion(x, y, radius, spawner=spawner))
