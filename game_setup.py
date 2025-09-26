@@ -121,7 +121,7 @@ def adding_names():
         if e.key == pygame.K_BACKSPACE:
             TextBox.curr_name_string = TextBox.curr_name_string[:-1]
         elif e.key == pygame.K_RETURN:
-            if len(NameQueue.names_queue) < 10:
+            if len(NameQueue.names_queue) < PLAYER_LIMIT:
                 NameQueue.names_queue.append(TextBox.curr_name_string)
                 TextBox.curr_name_string = ""
             else:
