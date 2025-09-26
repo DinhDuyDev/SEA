@@ -153,7 +153,7 @@ def adding_names():
 
     for i, v in enumerate(NameQueue.names_queue):
         names_surf_list = my_font.render(f"{i + 1} : {v}", False, (255, 0, 0))
-        names_rect_list = names_surf.get_rect(topleft=(WINDOW_WIDTH / 2 + 64, i * 16 + 64))
+        names_rect_list = names_surf.get_rect(topleft=(WINDOW_WIDTH / 2 + 64, i * 16 + 80))
         Game.draw_dest.blit(names_surf_list, names_rect_list)
 
 
