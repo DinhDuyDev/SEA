@@ -169,7 +169,7 @@ class Fighter:
         direction_to_target = point_direction(self.x, self.y, target_pos[0], target_pos[1])
         self.weapon_direction = direction_to_target
         if self.ROF > rof_end:
-            create_bullet(self.x, self.y, direction_to_target, self, 3, bullet_type="Rocket", damage=45)
+            create_bullet(self.x, self.y, direction_to_target, self, 3, bullet_type="Rocket", damage=45, kill_weapon=self.weapon_sprites[self.attack])
             self.ROF = 0
         self.ROF += 1
 
