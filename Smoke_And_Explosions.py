@@ -53,7 +53,7 @@ def create_smoke_trail(x, y, direction=random.randrange(0, 360), color=(128, 128
 
 class Explosion:
     list_of_explosion = []
-    def __init__(self, x, y, radius):
+    def __init__(self, x, y, radius, spawner=None):
         self.x = x
         self.y = y
         self.spawner = spawner
