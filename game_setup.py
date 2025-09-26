@@ -50,7 +50,6 @@ class Button:
 class NameQueue:
     names_queue = []
 
-
 class TextBox:
     curr_name_string = ""
 
