@@ -295,7 +295,6 @@ class Fighter:
         else:
             self.target = None
             self.hp = Fighter.full_health
-            print(f"VICTORY!!! Id: {self.fighter_id} won!!")
 
     def action(self):
         if self.target is None: # Triggers to fight
