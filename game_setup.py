@@ -113,6 +113,9 @@ def menu_room():
                 Game.running = False
 
 def adding_names():
+    add_name_button = [b for b in Button.list_of_buttons if b.text == "Add Name"][0]
+    delete_name_button = [b for b in Button.list_of_buttons if b.text == "Delete Name"][0]
+    proceed_button = [b for b in Button.list_of_buttons if b.text == "Proceed to fight!"][0]
 
     def get_keys(e):
         if e.key == pygame.K_BACKSPACE:
