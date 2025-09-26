@@ -33,6 +33,18 @@ def adding_names():
             if event.key == pygame.K_ESCAPE:
                 Game.running = False
             get_keys(event)
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            mx, my = mouse_coords()[0], mouse_coords()[1]
+
+            if add_name_button.button_rect.collidepoint(mx, my):
+                NameQueue.names_queue.append(TextBox.curr_name_string)
+                TextBox.curr_name_string = ""
+            elif delete_name_button.button_rect.collidepoint(mx, my):
+                if len(NameQueue.names_queue) != 0:
+                    NameQueue.names_queue.pop()
+            elif proceed_button.button_rect.collidepoint(mx, my):
+                Game.giving_names = False  # Move into play mode!
+                Game.curr_state = "FIGHTING"
 
     names_surf = my_font.render(f"> {TextBox.curr_name_string} ", False, (255, 0, 0))
     names_rect = names_surf.get_rect(topleft=(64, 64))
