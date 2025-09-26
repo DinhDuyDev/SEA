@@ -14,6 +14,46 @@ my_font = pygame.font.SysFont('./Kranky/Kranky-Regular.ttf', 15)
 
 # Defining functions
 
+class Button:
+    list_of_buttons = []
+    def __init__(self, x, y, w, h, text, room, color=(255, 0, 0)):
+        self.x = x
+        self.y = y
+        self.width = w
+        self.height = h
+        self.text = text
+        self.scene = room
+
+        self.hor_bounds = (x - w / 2, x + w / 2)
+        self.ver_bounds = (y - h / 2, y + h / 2)
+
+        self.color = color
+        self.og_color = color
+        self.text_surf = button_font.render(self.text, False, color)
+        self.button_rect = pygame.Rect(x, y, w, h)
+
+        self.button_rect.center = x, y
+
+        Button.list_of_buttons.append(self)
+
+    def action(self):
+        oc = self.og_color
+        if self.button_rect.collidepoint(mouse_coords()[0], mouse_coords()[1]):
+            self.color = (oc[0]/2, oc[1]/2, oc[2]/2)
+        else:
+            self.color = (oc[0], oc[1], oc[2])
+
+class NameQueue:
+    names_queue = []
+
+
+class TextBox:
+    curr_name_string = ""
+
+def menu_room():
+    start_game = [b for b in Button.list_of_buttons if b.text == "START GAME"][0]
+    end_game = [b for b in Button.list_of_buttons if b.text == "END GAME"][0]
+
 def adding_names():
 
     def get_keys(e):
