@@ -53,6 +53,48 @@ class NameQueue:
 class TextBox:
     curr_name_string = ""
 
+class OnDemandText:
+    list_of_text = []
+    def __init__(self, x, y, text, countdown=60, scale=1, color=(255, 0, 0), alignment="center"):
+        self.x = x
+        self.y = y
+        self.text = text
+        self.og_c = countdown
+        self.countdown = countdown
+        self.text_surf = pygame.transform.scale_by(my_font.render(text, False, color), scale)
+        self.text_rect = self.text_surf.get_rect(center=(self.x, self.y))
+
+        if alignment == "left":
+            self.text_rect = self.text_surf.get_rect(left=(self.x, self.y))
+        elif alignment == "right":
+            self.text_rect = self.text_surf.get_rect(right=(self.x, self.y))
+
+        OnDemandText.list_of_text.append(self)
+
+    def action(self):
+        self.countdown -= 1
+        if self.countdown <= 0:
+            OnDemandText.list_of_text.remove(self)
+        if self.countdown <= self.og_c:
+            self.text_surf.set_alpha(255 * (self.countdown / self.og_c))
+
+
+class Text:
+    list_of_text = []
+    def __init__(self, x, y, text, room, color=(255, 0, 0)):
+        self.x = x
+        self.y = y
+        self.text = text
+
+        self.text_surf = pygame.transform.scale_by(my_font.render(text, False, color), 2)
+        self.text_rect = self.text_surf.get_rect(center=(self.x, self.y))
+
+        self.scene = room
+        Text.list_of_text.append(self)
+
+    #def action(self):
+
+
 def menu_room():
     start_game = [b for b in Button.list_of_buttons if b.text == "START GAME"][0]
     end_game = [b for b in Button.list_of_buttons if b.text == "END GAME"][0]
