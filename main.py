@@ -22,6 +22,21 @@ def main():
         ######### Drawing block #########
         Game.draw_dest.fill((0, 0, 0))
 
+        for button in Button.list_of_buttons:
+            if button.scene == Game.curr_state:
+                button.action()
+                pygame.draw.rect(Game.draw_dest, button.color, button.button_rect, 1)
+                Game.draw_dest.blit(button.text_surf, button.text_surf.get_rect(center=(button.x, button.y)))
+
+        for text in Text.list_of_text:
+            if text.scene == Game.curr_state:
+                #text.action()
+                Game.draw_dest.blit(text.text_surf, text.text_rect)
+
+        for ondemand in OnDemandText.list_of_text:
+            ondemand.action()
+            Game.draw_dest.blit(ondemand.text_surf, ondemand.text_rect)
+
         Game.states[Game.curr_state]()
 
         #pygame.draw.rect(Game.draw_dest, (255, 0, 0), (100, 100, 25, 25))
