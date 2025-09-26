@@ -121,8 +121,12 @@ def adding_names():
         if e.key == pygame.K_BACKSPACE:
             TextBox.curr_name_string = TextBox.curr_name_string[:-1]
         else:
-            if e.key != pygame.K_ESCAPE and e.key != pygame.K_RETURN:  # and Game.giving_names:
-                TextBox.curr_name_string += event.unicode
+            if event.unicode.isalpha() or event.unicode == " ":  # and Game.giving_names:
+                if len(TextBox.curr_name_string) < 20:
+                    TextBox.curr_name_string += event.unicode
+                else:
+                    OnDemandText(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, "Names must be fewer than 20 letters",
+                                 countdown=60, scale=2)
 
     for event in pg.event.get():
         if event.type == pygame.QUIT:
