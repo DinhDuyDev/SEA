@@ -133,7 +133,7 @@ def adding_names():
             Game.running = False
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
-                Game.running = False
+                Game.curr_state = "MENU"
             get_keys(event)
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mx, my = mouse_coords()[0], mouse_coords()[1]
