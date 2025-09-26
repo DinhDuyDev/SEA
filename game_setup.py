@@ -40,6 +40,7 @@ class Button:
 
     def action(self):
         oc = self.og_color
+        self.text_surf = my_font.render(self.text, False, self.color)
         if self.button_rect.collidepoint(mouse_coords()[0], mouse_coords()[1]):
             self.color = (oc[0]/2, oc[1]/2, oc[2]/2)
         else:
