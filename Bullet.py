@@ -19,7 +19,7 @@ class Bullet:
                     create_bullet(self.x, self.y, random.randrange(0, 360), None, spd_mlt=0.25, bullet_type="Yellow Bullet")
             elif self.bullet_type == "Rocket":
                 self.damage = 35
-                create_explosion(self.x, self.y, 96)
+                create_explosion(self.x, self.y, 96, self.spawner)
             self.destroy()
 
     def __init__(self, x, y, dir_, spawner, spd_mlt=1.0, damage=15, bullet_type="Bullet"):
