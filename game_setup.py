@@ -16,7 +16,7 @@ my_font = pygame.font.SysFont("Verdana", 10)
 
 class Button:
     list_of_buttons = []
-    def __init__(self, x, y, w, h, text, room, color=(255, 0, 0)):
+    def __init__(self, x, y, w, h, text, room, color=(180, 0, 0), special_effects="None"):
         self.x = x
         self.y = y
         self.width = w
