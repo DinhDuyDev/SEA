@@ -56,6 +56,7 @@ class Explosion:
     def __init__(self, x, y, radius):
         self.x = x
         self.y = y
+        self.spawner = spawner
         self.radius = radius
         screen_shake(6, 30)
     def destroy(self):
