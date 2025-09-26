@@ -24,6 +24,8 @@ class Button:
         self.text = text
         self.scene = room
 
+        self.special_effects = special_effects
+
         self.hor_bounds = (x - w / 2, x + w / 2)
         self.ver_bounds = (y - h / 2, y + h / 2)
 
