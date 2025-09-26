@@ -258,7 +258,7 @@ class Game:
     level_editor = True
     giving_names = True
     running = True
-    curr_state = "ADDING_NAMES"
+    curr_state = "MENU"
 
     states = {
         "MENU" : menu_room,
