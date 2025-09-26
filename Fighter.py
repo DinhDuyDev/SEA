@@ -10,6 +10,46 @@ class Fighter:
     fighter_id = 0
     full_health = 1_000
     list_of_fighters = []
+    kill_feed = ""
+
+    kill_message = {
+        "MACHINEGUN" : [
+            "{k} Killed {v} With A Machine Gun",
+            "{k} Riddled {v} With Bullets",
+            "{v} Was Shot Up By {k}",
+            "{k} Pointed The Funny Pipe At {v}",
+        ],
+
+        "SHOTGUN" : [
+            "{k} Killed {v} With A shotgun",
+            "{k} Blasted Away {v} With a 12 gauge",
+            "{v} Was Perforated By {k}",
+            "{k} Shotgunned {v} (Painfully)",
+            "{k} Pointed The Funny Stick At {v}"
+        ],
+        "MINIGUN" : [
+            "{k} Killed {v} With A Minigun",
+            "{v} Ate A Risotto Of Lead From {k}",
+            "{v} Tasted {k} 's Bullets",
+            "{v} Stood Too Still And {k} Was Too Trigger Happy"
+        ],
+
+        "SPLITTER" : [
+            "{k} Killed {v} With The Splitter",
+            "{v} Ate A Bomb From {k}",
+            "{k} Gave {v} Some Nails To Eat",
+        ],
+        'ROCKETLAUNCHER' : [
+            "{k} Killed {v} With A Rocket Launcher",
+            "{v} Rode {k} 's Rocket Into Heaven",
+            "{k} Was Blown Apart By {v}",
+        ],
+        "KATANA" : [
+            "{k} TENNO HEIKA BANZAI!!!!!!! {v}",
+            "{k} Slashed {v} Open",
+            "{k} Turned Anime And {v} Turned Corpse"
+        ]
+    }
 
     def destroy(self):
         screen_shake(3, 30)
