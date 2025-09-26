@@ -182,16 +182,18 @@ def fighting():
     ######### Moving fighters
 
     # While you are playing
-    if not Game.giving_names:
-        for f in Fighter.list_of_fighters:
-            if not Game.PAUSED:
-                f.action()
-        for b in Bullet.list_of_bullets:
-            if not Game.PAUSED:
-                b.action()
-                for f in Fighter.list_of_fighters:
-                    if point_distance(b.x, b.y, f.x, f.y) < b.hit_radius and b.spawner is not f:
-                        f.take_damage(b.get_damage())
+    for f in Fighter.list_of_fighters:
+        if not Game.PAUSED:
+            f.action()
+
+    for b in Bullet.list_of_bullets:
+        if not Game.PAUSED:
+            b.action()
+            for f in Fighter.list_of_fighters:
+                if point_distance(b.x, b.y, f.x, f.y) < b.hit_radius and b.spawner is not f:
+                    f.take_damage(b.get_damage())
+                    f.killer = b.spawner
+                    f.kill_type = b.kill_weapon
 
 
     for b in Bullet.list_of_bullets:
