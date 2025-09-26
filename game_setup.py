@@ -161,10 +161,10 @@ def fighting():
                 pygame.draw.rect(Game.draw_dest, (0, 255, 0),
                                  (f.x - 16 - c[0], f.y + 8 - c[1], (f.get_health() / Fighter.full_health) * 32, 6))
 
-        for s in Smoke.list_of_smoke:
-            if not Game.PAUSED:
-                s.action()
-            pygame.draw.circle(Game.draw_dest, s.get_color(), (s.x - c[0], s.y - c[1]), s.radius)
+    for s in Smoke.list_of_smoke:
+        if not Game.PAUSED:
+            s.action()
+        pygame.draw.circle(Game.draw_dest, s.get_color(), (s.x - c[0], s.y - c[1]), s.radius)
 
     for st in SmokeTrail.list_of_smoke_trails:
         if not Game.PAUSED:
