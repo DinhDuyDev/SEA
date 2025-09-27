@@ -247,6 +247,15 @@ def fighting():
                     dir_to_player = point_direction(e.x, e.y, fi.x, fi.y)
                     fi.take_knockback(random.randrange(3, 6), dir_to_player)
             e.explode()
+
+    for f in Fighter.list_of_fighters:
+        if f.get_health() > 0:
+            pygame.draw.rect(Game.draw_dest, (255, 0, 0), (f.x - 16 - c[0], f.y + 8 - c[1], 32, 6))
+            pygame.draw.rect(Game.draw_dest, (82, 14, 125),
+                             (f.x - 16 - c[0], f.y + 8 - c[1], (f.get_recovery_health() / Fighter.full_health) * 32,
+                              6))
+            pygame.draw.rect(Game.draw_dest, (0, 255, 0),
+                             (f.x - 16 - c[0], f.y + 8 - c[1], (f.get_health() / Fighter.full_health) * 32, 6))
     # if Fighter.kill_feed != "":
     #     OnDemandText.list_of_text.clear()
     #     OnDemandText(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 - 128, Fighter.kill_feed, 180, 2)
