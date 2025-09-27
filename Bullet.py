@@ -2,6 +2,7 @@ import math
 import random
 from settings import *
 from Smoke_And_Explosions import *
+from Sounds import *
 class Bullet:
     list_of_bullets = []
 
@@ -17,6 +18,7 @@ class Bullet:
                 for i in range(12):
                     screen_shake(4, 15)
                     create_bullet(self.x, self.y, random.randrange(0, 360), None, spd_mlt=0.25, bullet_type="Yellow Bullet")
+                Sounds.splitter_sound.play(0)
             elif self.bullet_type == "Rocket":
                 self.damage = 35
                 create_explosion(self.x, self.y, 96, self.spawner)

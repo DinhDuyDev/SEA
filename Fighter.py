@@ -82,6 +82,7 @@ class Fighter:
                     ]
                 )
             Fighter.kill_feed = kill
+        Sounds.death_sound.play(0)
         Fighter.list_of_fighters.remove(self)
 
     def route_enemy_left(self):
@@ -130,6 +131,7 @@ class Fighter:
                 #create_bullet(self.x, self.y, direction_to_target, 15, self)
                 direction_to_target = point_direction(self.x, self.y, target_pos[0], target_pos[1]) + random.randrange(-7, 7)
                 create_bullet(self.x, self.y, direction_to_target, self, damage=11, kill_weapon=self.weapon_sprites[self.attack])
+            Sounds.bullet_shoot.play(0)
             self.ROF = 0
         self.ROF += 1
 
@@ -140,7 +142,7 @@ class Fighter:
         self.weapon_direction = direction_to_target
         if self.ROF > rof_end:
             create_bullet(self.x, self.y, direction_to_target, self, 2, kill_weapon=self.weapon_sprites[self.attack])
-
+            Sounds.bullet_shoot.play(0)
             self.ROF = 0
         self.ROF += 1
 
@@ -152,6 +154,7 @@ class Fighter:
         if self.ROF > rof_end:
             screen_shake(1, 15)
             create_bullet(self.x, self.y, direction_to_target, self, 3, kill_weapon=self.weapon_sprites[self.attack])
+            Sounds.bullet_shoot.play(0)
             self.ROF = 0
         self.ROF += 1
 
@@ -172,6 +175,7 @@ class Fighter:
         self.weapon_direction = direction_to_target
         if self.ROF > rof_end:
             create_bullet(self.x, self.y, direction_to_target, self, 3, bullet_type="Rocket", damage=45, kill_weapon=self.weapon_sprites[self.attack])
+            Sounds.rocket_firing.play(0)
             self.ROF = 0
         self.ROF += 1
 
@@ -187,13 +191,15 @@ class Fighter:
         if self.ROF > rof_end:
             target_pos = self.target.get_pos()
             if point_distance(self.x, self.y, target_pos[0], target_pos[1]) < 12:
-                self.target.hp -= 15
+                self.target.take_damage(15)
                 self.target.killer = self
                 self.target.kill_type = "KATANA"
                 self.target.take_knockback(4, self.weapon_direction)
                 c = random.randrange(70, 255)
                 create_smoke_trail(self.x, self.y, random.randrange(0, 360), (c, 0, 0))
+                Sounds.katana_hit_sound.play(0)
             self.ROF = 0
+            Sounds.katana_sound.play(0)
         self.ROF += 1
 
     def update_position(self):

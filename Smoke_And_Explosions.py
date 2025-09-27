@@ -1,6 +1,7 @@
 import random
 import math
 from Camera import *
+from Sounds import *
 class Smoke:
     list_of_smoke = []
     def __init__(self, x, y, radius, color=(128, 128, 128)):
@@ -59,6 +60,8 @@ class Explosion:
         self.spawner = spawner
         self.radius = radius
         screen_shake(6, 30)
+
+        Sounds.rocket_explosion.play()
     def destroy(self):
         Explosion.list_of_explosion.remove(self)
     def explode(self):
