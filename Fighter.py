@@ -5,6 +5,7 @@ from functions import *
 from settings import *
 from Bullet import *
 from Camera import *
+from Sounds import *
 
 class Fighter:
     fighter_id = 0
@@ -139,6 +140,7 @@ class Fighter:
         self.weapon_direction = direction_to_target
         if self.ROF > rof_end:
             create_bullet(self.x, self.y, direction_to_target, self, 2, kill_weapon=self.weapon_sprites[self.attack])
+
             self.ROF = 0
         self.ROF += 1
 
@@ -323,7 +325,10 @@ class Fighter:
                 if curr_state["endstate"] != -1:
                     curr_state["endstate"]()
             else:
-                self.state_countdown += 1
+                rate = 1
+                if self.hp < Fighter.full_health / 3:
+                    rate = 2
+                self.state_countdown += rate
 
             # Use your attacks
             self.attack()
