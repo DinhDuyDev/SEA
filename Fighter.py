@@ -230,13 +230,10 @@ class Fighter:
         self.target = None
 
         self.states_list = [ # {movement_function, attack_function, duration, next_pointer
-            {"movement_function" : self.route_enemy_left, "attack_function" : -1, "duration" : 2.75 * 60, "next_pointer" : -1, "endstate" : -1,
-             "spec_name" : "ROUTE1"},
-            {"movement_function": self.route_enemy_right, "attack_function": -1, "duration": 2.75 * 60, "endstate" : -1,
-             "next_pointer": -1,
-             "spec_name": "ROUTE2"},
-            {"movement_function": self.tackle_enemy, "attack_function" : self.slash_enemy, "duration": 2.5 * 60, "next_pointer": -1, "endstate" : -1,
-             "spec_name" : "TACKLE"},
+            {"movement_function" : self.route_enemy_left, "attack_function" : -1, "duration" : 2.75 * 60, "next_pointer" : -1, "endstate" : -1, "spec_name" : "ROUTE1"},
+            {"movement_function": self.route_enemy_right, "attack_function": -1, "duration": 2.75 * 60, "endstate" : -1, "next_pointer": -1, "spec_name": "ROUTE2"},
+            {"movement_function": -1, "attack_function": self.sniper_enemy, "duration": 300, "next_pointer": -1, "endstate": -1, "spec_name": "SNIPER"},
+            {"movement_function": self.tackle_enemy, "attack_function" : self.slash_enemy, "duration": 2.5 * 60, "next_pointer": -1, "endstate" : -1, "spec_name" : "TACKLE"},
 
             ### MOVING RANDOMLY
             {"movement_function": self.move_random, "attack_function":
