@@ -11,7 +11,7 @@ pg.init()
 pg.font.init()
 
 my_font = pygame.font.SysFont("Verdana", 10)
-
+first_run = True
 # Defining functions
 
 class Button:
@@ -109,7 +109,9 @@ def menu_room():
         elif event.type == pygame.MOUSEBUTTONDOWN:
             if start_game.button_rect.collidepoint(mx, my):
                 Game.curr_state = "ADDING_NAMES"
+                Sounds.button_click_sound.play(0)
             elif end_game.button_rect.collidepoint(mx, my):
+                Sounds.button_click_sound.play(0)
                 Game.running = False
 
 def adding_names():
@@ -119,9 +121,11 @@ def adding_names():
 
     def get_keys(e):
         if e.key == pygame.K_BACKSPACE:
+            Sounds.delete_sound.play(0)
             TextBox.curr_name_string = TextBox.curr_name_string[:-1]
         elif e.key == pygame.K_RETURN:
             if len(NameQueue.names_queue) < PLAYER_LIMIT:
+                Sounds.added_names_sound.play(0)
                 NameQueue.names_queue.append(TextBox.curr_name_string)
                 TextBox.curr_name_string = ""
             else:
@@ -129,6 +133,7 @@ def adding_names():
         else:
             if event.unicode.isalpha() or event.unicode == " ":  # and Game.giving_names:
                 if len(TextBox.curr_name_string) < 20:
+                    Sounds.keyboard_sound.play(0)
                     TextBox.curr_name_string += event.unicode
                 else:
                     OnDemandText(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, "Names must be fewer than 20 letters",
@@ -139,12 +144,14 @@ def adding_names():
             Game.running = False
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
+                Sounds.button_click_sound.play(0)
                 Game.curr_state = "MENU"
             get_keys(event)
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mx, my = mouse_coords()[0], mouse_coords()[1]
             if add_name_button.button_rect.collidepoint(mx, my):
                 if len(NameQueue.names_queue) < PLAYER_LIMIT:
+                    Sounds.added_names_sound.play(0)
                     NameQueue.names_queue.append(TextBox.curr_name_string)
                     TextBox.curr_name_string = ""
                 else:
@@ -152,7 +159,9 @@ def adding_names():
             elif delete_name_button.button_rect.collidepoint(mx, my):
                 if len(NameQueue.names_queue) != 0:
                     NameQueue.names_queue.pop()
+                    Sounds.deleted_name.play(0)
             elif proceed_button.button_rect.collidepoint(mx, my):
+                Sounds.button_click_sound.play(0)
                 if len(NameQueue.names_queue) >= PLAYER_MINIMUM:
                     Game.giving_names = False  # Move into play mode!
                     Game.curr_state = "FIGHTING"
@@ -177,6 +186,7 @@ def fighting():
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 Game.curr_state = "ADDING_NAMES"
+                Sounds.button_click_sound.play(0)
 
             ######### Spawning players
             elif event.key == pygame.K_e:

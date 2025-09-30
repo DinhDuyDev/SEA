@@ -43,7 +43,8 @@ class Fighter:
         'ROCKETLAUNCHER' : [
             "{k} Killed {v} With A Rocket Launcher",
             "{v} Rode {k} 's Rocket Into Heaven",
-            "{k} Was Blown Apart By {v}",
+            "{v} Was Blown Apart By {k}",
+            "{v} was served a flaming hot rocket by {k}"
         ],
         "KATANA" : [
             "{k} TENNO HEIKA BANZAI!!!!!!! {v}",
@@ -131,7 +132,7 @@ class Fighter:
                 #create_bullet(self.x, self.y, direction_to_target, 15, self)
                 direction_to_target = point_direction(self.x, self.y, target_pos[0], target_pos[1]) + random.randrange(-7, 7)
                 create_bullet(self.x, self.y, direction_to_target, self, damage=11, kill_weapon=self.weapon_sprites[self.attack])
-            Sounds.bullet_shoot.play(0)
+            Sounds.shotgun_sound.play(0)
             self.ROF = 0
         self.ROF += 1
 
@@ -154,7 +155,9 @@ class Fighter:
         if self.ROF > rof_end:
             screen_shake(1, 15)
             create_bullet(self.x, self.y, direction_to_target, self, 3, kill_weapon=self.weapon_sprites[self.attack])
-            Sounds.bullet_shoot.play(0)
+            chance = random.randrange(0, 100)
+            if chance < 40:
+                Sounds.bullet_shoot.play(0)
             self.ROF = 0
         self.ROF += 1
 
@@ -165,6 +168,7 @@ class Fighter:
         self.weapon_direction = direction_to_target
         if self.ROF > rof_end:
             create_bullet(self.x, self.y, direction_to_target, self, 1.75, bullet_type="Splitter", kill_weapon=self.weapon_sprites[self.attack])
+            Sounds.splitter_shoot.play(0)
             self.ROF = 0
         self.ROF += 1
 

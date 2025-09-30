@@ -15,7 +15,7 @@ def main():
     Button(WINDOW_WIDTH/2, WINDOW_HEIGHT/2+122, 128, 32, "Delete Name", "ADDING_NAMES")
     Button(WINDOW_WIDTH/2, WINDOW_HEIGHT/2+154, 128, 32, "Proceed to fight!", "ADDING_NAMES")
 
-    Text(WINDOW_WIDTH/2, WINDOW_HEIGHT/2 - 128, "AI SUPER SHOWDOWN", "MENU")
+    Text(WINDOW_WIDTH/2, WINDOW_HEIGHT/2 - 128, "AI SUPER SHOWDOWN: THE SECOND CHEEKS", "MENU")
     Text(WINDOW_WIDTH/2, WINDOW_HEIGHT/2 - 144, "ENTER THE NAMES", "ADDING_NAMES")
 
     while Game.running:
@@ -30,7 +30,6 @@ def main():
 
         for text in Text.list_of_text:
             if text.scene == Game.curr_state:
-                #text.action()
                 Game.draw_dest.blit(text.text_surf, text.text_rect)
 
         for ondemand in OnDemandText.list_of_text:

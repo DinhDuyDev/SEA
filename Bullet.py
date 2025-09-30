@@ -42,6 +42,9 @@ class Bullet:
         create_smoke(self.x + math.cos(math.radians(self.dir-7)) * 24
                      , self.y - math.sin(math.radians(self.dir-7)) * 24, 6, (255, 255, 255))
 
+        if self.bullet_type == "Rocket":
+            Sounds.rocket_launch.play(0)
+
     def action(self):
         self.x += math.cos(math.radians(self.dir)) * self.speed
         self.y -= math.sin(math.radians(self.dir)) * self.speed
@@ -51,6 +54,8 @@ class Bullet:
 
             if self.bullet_type == "Rocket":
                 self.damage -= 0.5
+                if self.damage == 36:
+                    Sounds.rocket_trail.play(0)
                 if self.damage % 2 == 0:
                     c = random.randrange(95, 138)
                     create_smoke(self.x, self.y, random.randrange(3, 5), (c, c, c))
