@@ -321,5 +321,6 @@ WEAPONS = {
     "MACHINEGUN": pygame.image.load('sprites/machinegun.png').convert_alpha(),
     "SPLITTER" : pygame.image.load('sprites/splitter.png').convert_alpha(),
     "MINIGUN" : pygame.image.load('sprites/minigun.png').convert_alpha(),
-    "ROCKETLAUNCHER" : pygame.image.load('sprites/rocketlauncher.png').convert_alpha()
+    "ROCKETLAUNCHER" : pygame.image.load('sprites/rocketlauncher.png').convert_alpha(),
+    "SNIPER" : pygame.image.load('sprites/sniper.png').convert_alpha()
 }
