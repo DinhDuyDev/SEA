@@ -54,21 +54,23 @@ def create_smoke_trail(x, y, direction=random.randrange(0, 360), color=(128, 128
 
 class Explosion:
     list_of_explosion = []
-    def __init__(self, x, y, radius, spawner=None):
+    def __init__(self, x, y, radius, spawner=None, create_ray=True):
         self.x = x
         self.y = y
         self.spawner = spawner
         self.radius = radius
         screen_shake(6, 30)
+        self.create_ray = create_ray
 
         Sounds.rocket_explosion.play()
     def destroy(self):
         Explosion.list_of_explosion.remove(self)
     def explode(self):
-        for i in range(7):
-            create_smoke_trail(self.x, self.y, random.randrange(0, 360), color=(255, 255, 255))
+        if self.create_ray:
+            for i in range(7):
+                create_smoke_trail(self.x, self.y, random.randrange(0, 360), color=(255, 255, 255))
         create_smoke(self.x, self.y, 48, (255, 255, 255))
         self.destroy()
 
-def create_explosion(x, y, radius, spawner=None):
-    Explosion.list_of_explosion.append(Explosion(x, y, radius, spawner=spawner))
+def create_explosion(x, y, radius, spawner=None, create_ray=True):
+    Explosion.list_of_explosion.append(Explosion(x, y, radius, spawner=spawner, create_ray=create_ray))

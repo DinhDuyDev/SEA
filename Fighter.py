@@ -1,11 +1,6 @@
-import pygame
-import math
-import random
 from functions import *
-from settings import *
 from Bullet import *
-from Camera import *
-from Sounds import *
+from Hitscan import *
 
 class Fighter:
     fighter_id = 0
@@ -50,6 +45,12 @@ class Fighter:
             "{k} TENNO HEIKA BANZAI!!!!!!! {v}",
             "{k} Slashed {v} Open",
             "{k} Turned Anime And {v} Turned Corpse"
+        ],
+
+        "SNIPER": [
+            "{k} headshotted {v}",
+            "Nice shot {k}!",
+            "{k} thought {v}'s head was bloody twelve feet tall."
         ]
     }
 
@@ -129,11 +130,30 @@ class Fighter:
         self.weapon_direction = direction_to_target
         if self.ROF > rof_end:
             for i in range(7):
-                #create_bullet(self.x, self.y, direction_to_target, 15, self)
                 direction_to_target = point_direction(self.x, self.y, target_pos[0], target_pos[1]) + random.randrange(-7, 7)
                 create_bullet(self.x, self.y, direction_to_target, self, damage=11, kill_weapon=self.weapon_sprites[self.attack])
             Sounds.shotgun_sound.play(0)
             self.ROF = 0
+        self.ROF += 1
+
+    def sniper_enemy(self):
+        rof_end = 298
+        if self.hp < Fighter.full_health / 3:
+            rof_end = 140
+        target_pos = self.target.get_pos()
+        if self.ROF < rof_end-8:
+            self.weapon_direction = point_direction(self.x, self.y, target_pos[0], target_pos[1])
+            create_smoke(self.x + math.cos(math.radians(self.weapon_direction)) * 12
+                         , self.y - math.sin(math.radians(self.weapon_direction)) * 12, random.randrange(5, 10), color='blue')
+        elif self.ROF >= rof_end:
+            create_hitscan(self.x, self.y, Fighter.full_health*4, self.weapon_direction, 640, self)
+            screen_shake(6, 60)
+            Sounds.sniper_sound.play(0)
+            self.ROF = 0
+        else:
+            create_smoke(self.x + math.cos(math.radians(self.weapon_direction)) * 12
+                         , self.y - math.sin(math.radians(self.weapon_direction)) * 12, random.randrange(1, 4),
+                         color='red')
         self.ROF += 1
 
     def machine_gun_enemy(self):
@@ -146,6 +166,19 @@ class Fighter:
             Sounds.bullet_shoot.play(0)
             self.ROF = 0
         self.ROF += 1
+
+
+    def bomb(self):
+        rof_end = 50
+        target_pos = self.target.get_pos()
+        direction_to_target = point_direction(self.x, self.y, target_pos[0], target_pos[1]) + random.randrange(-5, 5)
+        self.weapon_direction = direction_to_target
+        if self.ROF > rof_end:
+            create_bullet(self.x, self.y, direction_to_target, self, 2, kill_weapon=self.weapon_sprites[self.attack], bullet_type="Bomb")
+            Sounds.bullet_shoot.play(0)
+            self.ROF = 0
+        self.ROF += 1
+
 
     def minigun_enemy(self):
         rof_end = 1
@@ -240,6 +273,7 @@ class Fighter:
                 -1  # self.minigun_enemy
                 , "duration": 0.25 * 60, "next_pointer": 4, "endstate" : self.change_direction,
              "spec_name": "RAND_MOVE"},
+
             {"movement_function": self.move_random, "attack_function":
                 -1  # self.minigun_enemy
                 , "duration": 0.25 * 60, "next_pointer": 5, "endstate": self.change_direction,
@@ -267,6 +301,7 @@ class Fighter:
             self.minigun_enemy : "MINIGUN",
             self.splitter_enemy : "SPLITTER",
             self.rocket_launcher : 'ROCKETLAUNCHER',
+            self.sniper_enemy : "SNIPER",
             self.slash_enemy : "KATANA"
         }
 
@@ -339,7 +374,7 @@ class Fighter:
 
             # Use your attacks
             self.attack()
-            if curr_state["movement_function"] is not None:
+            if curr_state["movement_function"] != -1:
                 curr_state["movement_function"]()
             self.update_position()
 

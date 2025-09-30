@@ -1,9 +1,6 @@
 import pygame as pg
 from pygame.locals import *
-from settings import *
 import pygame.time
-from Smoke_And_Explosions import *
-from Camera import *
 from Fighter import *
 
 ## Initializing pygame
@@ -111,7 +108,6 @@ def menu_room():
                 Game.curr_state = "ADDING_NAMES"
                 Sounds.button_click_sound.play(0)
             elif end_game.button_rect.collidepoint(mx, my):
-                Sounds.button_click_sound.play(0)
                 Game.running = False
 
 def adding_names():
@@ -232,7 +228,9 @@ def fighting():
             Game.draw_dest.blit(unique_tint, unique_tint.get_rect(center=(f.x - c[0], f.y - c[1])))
 
             w = pygame.transform.rotate(WEAPONS[f.get_weapon_sprite()], f.get_weapon_direction())
-            Game.draw_dest.blit(w, w.get_rect(center=(f.x - c[0], f.y + 5 - c[1])))
+            dx = math.cos(math.radians(f.get_weapon_direction())) * 8
+            dy = -math.sin(math.radians(f.get_weapon_direction())) * 8
+            Game.draw_dest.blit(w, w.get_rect(center=(f.x - c[0]+dx, f.y + 5 - c[1]+dy)))
 
             text_surf = my_font.render(f.get_name(), False, (255, 255, 255))
             text_rect = text_surf.get_rect(center=(f.x, f.y - 16))
@@ -247,6 +245,19 @@ def fighting():
     for st in SmokeTrail.list_of_smoke_trails:
         if not Game.PAUSED:
             st.action()
+
+    for h in Hitscan.list_of_hitscan:
+        h.action()
+        x, y, end_x, end_y = h.get_pos()
+        damage = h.get_damage()
+        rad = h.get_hit_radius()
+        spawner = h.get_spawner()
+        h.destroy()
+
+        for f in Fighter.list_of_fighters:
+            if point_distance_perpendicular(f.x, f.y, x, y, end_x, end_y) < rad:
+                if spawner is not f:
+                    f.take_damage(damage)
 
     for e in Explosion.list_of_explosion:
         if not Game.PAUSED:
@@ -267,10 +278,10 @@ def fighting():
             pygame.draw.rect(Game.draw_dest, (0, 255, 0),
                              (f.x - 16 - c[0], f.y + 8 - c[1], (f.get_health() / Fighter.full_health) * 32, 6))
 
-    if Fighter.kill_feed != "":
-        OnDemandText.list_of_text.clear()
-        OnDemandText(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 - 128, Fighter.kill_feed, 180, 2)
-        Fighter.kill_feed = ""
+    # if Fighter.kill_feed != "":
+    #     OnDemandText.list_of_text.clear()
+    #     OnDemandText(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 - 128, Fighter.kill_feed, 180, 2)
+    #     Fighter.kill_feed = ""
 
     if len(Fighter.list_of_fighters) == 1:
         OnDemandText(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, f"{Fighter.list_of_fighters[0].name} won!", 30, 2)

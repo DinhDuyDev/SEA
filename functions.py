@@ -12,6 +12,11 @@ def point_direction(x, y, a, b):
     deg = math.atan2(-dy, dx)
     return math.degrees(deg)
 
+def point_distance_perpendicular(x, y, x_s, y_s, x_e, y_e):
+    numerator = abs((x_e - x_s) * (y_s - y) - (x_s - x) * (y_e - y_s))
+    denominator = math.sqrt((x_e - x_s)**2 + (y_e - y_s) ** 2)
+
+    return numerator / denominator
 def sign(a):
     if a == 0:
         return 0

@@ -10,6 +10,9 @@ class Sounds:
     rocket_firing = pygame.mixer.Sound('./sounds/rocket_firing.wav')
     rocket_firing.set_volume(0.25)
 
+    rocket_firing1 = pygame.mixer.Sound('./sounds/rocket_firing_off.wav')
+    rocket_firing1.set_volume(0.25)
+
     death_sound = pygame.mixer.Sound('./sounds/deathsound.wav')
     death_sound.set_volume(0.37)
 
@@ -48,3 +51,6 @@ class Sounds:
 
     shotgun_sound = pygame.mixer.Sound('./sounds/shotgun.wav')
     shotgun_sound.set_volume(0.25)
+
+    sniper_sound = pygame.mixer.Sound('./sounds/sniper_supplement.wav')
+    sniper_sound.set_volume(0.25)
