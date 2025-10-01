@@ -1,7 +1,7 @@
 from functions import *
 from Bullet import *
 from Hitscan import *
-
+from Bomb import *
 class Fighter:
     fighter_id = 0
     full_health = 1_000
@@ -90,34 +90,39 @@ class Fighter:
     def route_enemy_left(self):
         target_pos = self.target.get_pos()
         direction_to_target = point_direction(self.x, self.y, target_pos[0], target_pos[1]) + 90
-        self.x += math.cos(math.radians(direction_to_target)) * 2.0
-        self.y -= math.sin(math.radians(direction_to_target)) * 2.0
+        self.speed = 2.0
+        self.hsp = math.cos(math.radians(direction_to_target))
+        self.vsp = math.sin(math.radians(direction_to_target))
 
     def route_enemy_right(self):
         target_pos = self.target.get_pos()
         direction_to_target = point_direction(self.x, self.y, target_pos[0], target_pos[1]) - 90
-        self.x += math.cos(math.radians(direction_to_target)) * 2.0
-        self.y -= math.sin(math.radians(direction_to_target)) * 2.0
+        self.speed = 2.0
+        self.hsp = math.cos(math.radians(direction_to_target))
+        self.vsp = math.sin(math.radians(direction_to_target))
 
     def tackle_enemy(self):
         target_pos = self.target.get_pos()
         direction_to_target = point_direction(self.x, self.y, target_pos[0], target_pos[1])
 
-        self.x += math.cos(math.radians(direction_to_target)) * 7.0
-        self.y -= math.sin(math.radians(direction_to_target)) * 7.0
+        self.speed = 7.0
+        self.hsp = math.cos(math.radians(direction_to_target))
+        self.vsp = math.sin(math.radians(direction_to_target))
 
-        self.x += math.cos(math.radians(random.randrange(0, 360))) * 2
-        self.y -= math.sin(math.radians(random.randrange(0, 360))) * 2
+        self.hsp += math.cos(math.radians(random.randrange(0, 360))) * (2/7)
+        self.vsp += math.sin(math.radians(random.randrange(0, 360))) * (2/7)
 
     def back_away_enemy(self):
         target_pos = self.target.get_pos()
         direction_to_target = point_direction(self.x, self.y, target_pos[0], target_pos[1]) + 180
-        self.x += math.cos(math.radians(direction_to_target)) * 3.25
-        self.y -= math.sin(math.radians(direction_to_target)) * 3.25
+        self.speed = 3.25
+        self.hsp = math.cos(math.radians(direction_to_target))
+        self.vsp = math.sin(math.radians(direction_to_target))
 
     def move_random(self):
-        self.x += math.cos(math.radians(self.movement_direction)) * 3.0
-        self.y -= math.cos(math.radians(self.movement_direction)) * 3.0
+        self.speed = 3.0
+        self.hsp = math.cos(math.radians(self.movement_direction))
+        self.vsp = math.sin(math.radians(self.movement_direction))
 
     def change_direction(self):
         self.movement_direction = random.randrange(0, 360)
@@ -174,7 +179,8 @@ class Fighter:
         direction_to_target = point_direction(self.x, self.y, target_pos[0], target_pos[1]) + random.randrange(-5, 5)
         self.weapon_direction = direction_to_target
         if self.ROF > rof_end:
-            create_bullet(self.x, self.y, direction_to_target, self, 2, kill_weapon=self.weapon_sprites[self.attack], bullet_type="Bomb")
+            for i in range(7):
+                create_bomb(self.x, self.y, self.weapon_direction + random.randrange(-12, 12), self)
             Sounds.bullet_shoot.play(0)
             self.ROF = 0
         self.ROF += 1
@@ -247,6 +253,12 @@ class Fighter:
     def __init__(self, x, y, name=f"NONAME{fighter_id}", hp=full_health):
         self.x = x
         self.y = y
+
+        self.hsp = 0
+        self.vsp = 0
+
+        self.speed = 0
+
         self.hp = hp
         self.recovery_hp = hp
 
@@ -302,6 +314,7 @@ class Fighter:
             self.splitter_enemy : "SPLITTER",
             self.rocket_launcher : 'ROCKETLAUNCHER',
             self.sniper_enemy : "SNIPER",
+            self.bomb : "BOMB",
             self.slash_enemy : "KATANA"
         }
 
@@ -318,6 +331,7 @@ class Fighter:
             self.shotgun_enemy,
             self.splitter_enemy,
             self.rocket_launcher,
+            self.bomb,
             self.minigun_enemy
         ]
         self.state = random.choice(self.states_list)
@@ -367,15 +381,21 @@ class Fighter:
                 if curr_state["endstate"] != -1:
                     curr_state["endstate"]()
             else:
-                rate = 1
-                if self.hp < Fighter.full_health / 3:
-                    rate = 2
-                self.state_countdown += rate
+                # rate = 1
+                # if self.hp < Fighter.full_health / 3:
+                #     rate = 2
+                self.state_countdown += 1
 
             # Use your attacks
             self.attack()
             if curr_state["movement_function"] != -1:
                 curr_state["movement_function"]()
+
+            if self.hp < Fighter.full_health / 3:
+                self.speed *= 1.75
+
+            self.x += self.hsp * self.speed
+            self.y -= self.vsp * self.speed
             self.update_position()
 
             if self.target.get_health() <= 0:

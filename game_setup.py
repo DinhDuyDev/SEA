@@ -217,6 +217,10 @@ def fighting():
         b_spr = pygame.transform.rotate(BULLET_SPRITES[b.get_type()], b.dir)
         Game.draw_dest.blit(b_spr, b_spr.get_rect(center=(b.x - c[0], b.y - c[1])))
 
+    for bomb in Bomb.list_of_bombs:
+        bomb_spr = pygame.transform.rotate(WEAPONS["BOMB"], bomb.rand_dir)
+        Game.draw_dest.blit(bomb_spr, bomb_spr.get_rect(center=(bomb.x - c[0], bomb.y - c[1])))
+
     ######## Drawing block (cont) ########
     for f in Fighter.list_of_fighters:
         if f.hp > 0:
@@ -278,6 +282,8 @@ def fighting():
             pygame.draw.rect(Game.draw_dest, (0, 255, 0),
                              (f.x - 16 - c[0], f.y + 8 - c[1], (f.get_health() / Fighter.full_health) * 32, 6))
 
+    for bomb in Bomb.list_of_bombs:
+        bomb.action()
     # if Fighter.kill_feed != "":
     #     OnDemandText.list_of_text.clear()
     #     OnDemandText(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 - 128, Fighter.kill_feed, 180, 2)
@@ -333,5 +339,6 @@ WEAPONS = {
     "SPLITTER" : pygame.image.load('sprites/splitter.png').convert_alpha(),
     "MINIGUN" : pygame.image.load('sprites/minigun.png').convert_alpha(),
     "ROCKETLAUNCHER" : pygame.image.load('sprites/rocketlauncher.png').convert_alpha(),
+    "BOMB" : pygame.image.load('sprites/bomb.png').convert_alpha(),
     "SNIPER" : pygame.image.load('sprites/sniper.png').convert_alpha()
 }
